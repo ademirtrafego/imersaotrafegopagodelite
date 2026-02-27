@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Imersão Tráfego de Elite · 11 e 12 Abril 2026</title>
+    <!-- Fonte Inter (pesos fortes para cópia robusta) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0B0F;
+            color: #FFFFFF;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        /* CORES */
+        :root {
+            --red: #E11D2F;
+            --red-dark: #B01020;
+            --black: #0B0B0F;
+            --black-light: #16161E;
+            --gray-text: #C5C5D6;
+            --gray-light: #2A2A35;
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(225, 29, 47, 0.7); }
+            70% { box-shadow: 0 0 20px 10px rgba(225, 29, 47, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(225, 29, 47, 0); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* TIPOGRAFIA ROBUSTA */
+        h1, h2, h3 {
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+        }
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .section-title .red {
+            color: var(--red);
+        }
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--gray-text);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+        }
+        .text-red { color: var(--red); }
+
+        /* BOTÕES */
+        .btn-primary {
+            background: var(--red);
+            color: white;
+            font-weight: 800;
+            padding: 18px 45px;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-size: 1.4rem;
+            letter-spacing: -0.02em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 15px 30px -8px rgba(225, 29, 47, 0.6);
+            animation: pulseGlow 2.5s infinite;
+            width: fit-content;
+            margin: 0 auto;
+        }
+        .btn-primary i {
+            font-size: 2rem;
+        }
+        .btn-primary:hover {
+            background: var(--red-dark);
+            transform: scale(1.05);
+            box-shadow: 0 25px 35px -8px rgba(225, 29, 47, 0.8);
+        }
+
+        /* TOP BAR */
+        .top-bar {
+            background: #07070A;
+            padding: 14px 0;
+            border-bottom: 3px solid var(--red);
+            text-align: center;
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .top-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .top-item i {
+            color: var(--red);
+            font-size: 1.3rem;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 60px 0 40px;
+            background: radial-gradient(circle at 10% 20%, #1A1A24, #0B0B0F 80%);
+            text-align: center;
+        }
+        .hero-badge {
+            background: rgba(225, 29, 47, 0.15);
+            color: #FFB3B3;
+            font-weight: 700;
+            padding: 10px 24px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 25px;
+            border: 1px solid rgba(225, 29, 47, 0.5);
+            backdrop-filter: blur(4px);
+            font-size: 1rem;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            max-width: 900px;
+            margin: 0 auto 20px;
+        }
+        .hero h1 span {
+            color: var(--red);
+            position: relative;
+            display: inline-block;
+        }
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: rgba(225, 29, 47, 0.3);
+            z-index: -1;
+        }
+        .hero-sub {
+            font-size: 1.4rem;
+            color: #E0E0F0;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-weight: 500;
+        }
+        .hero-price {
+            margin: 35px 0 25px;
+        }
+        .price-tag {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: white;
+        }
+        .price-tag small {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #A0A0B5;
+        }
+        .hero-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 40px 0 20px;
+        }
+        .info-chip {
+            background: #16161E;
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 1px solid #2E2E3A;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-chip i {
+            color: var(--red);
+        }
+
+        /* BENEFÍCIOS (CARDS ROBUSTOS) */
+        .benefits {
+            padding: 90px 0;
+            background: #0F0F15;
+            text-align: center;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .benefit-card {
+            background: #13131B;
+            padding: 40px 30px;
+            border-radius: 40px;
+            border: 1px solid #2A2A38;
+            transition: 0.3s;
+            text-align: left;
+        }
+        .benefit-card:hover {
+            border-color: var(--red);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 40px -20px #E11D2F;
+        }
+        .benefit-icon {
+            background: #1E1E2A;
+            width: 80px;
+            height: 80px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            color: var(--red);
+            font-size: 2.5rem;
+            border: 1px solid #3A3A4A;
+        }
+        .benefit-card h3 {
+            font-size: 1.9rem;
+            margin-bottom: 15px;
+        }
+        .benefit-card p {
+            color: #B5B5CC;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* ESTRUTURA (DIAS) */
+        .structure {
+            padding: 90px 0;
+            background: #0B0B0F;
+            text-align: center;
+        }
+        .structure-list {
+            max-width: 900px;
+            margin: 50px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .structure-item {
+            background: #13131B;
+            border: 1px solid #2C2C3A;
+            border-radius: 70px;
+            padding: 22px 35px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            text-align: left;
+            transition: 0.2s;
+        }
+        .structure-item:hover {
+            border-color: var(--red);
+            background: #191923;
+        }
+        .structure-item i {
+            font-size: 2.2rem;
+            color: var(--red);
+            background: #22222E;
+            padding: 15px;
+            border-radius: 50%;
+            width: 70px;
+            text-align: center;
+        }
+        .structure-item span {
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .bonus-highlight {
+            margin-top: 40px;
+            font-size: 1.4rem;
+            background: #1A1A26;
+            padding: 20px 30px;
+            border-radius: 80px;
+            display: inline-block;
+            border: 2px solid var(--red);
+        }
+
+        /* PÚBLICO (TAGS) */
+        .for-who {
+            padding: 90px 0;
+            background: #0F0F15;
+            text-align: center;
+        }
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+        .tag {
+            background: #1C1C28;
+            padding: 14px 30px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            border: 1px solid #333342;
+            transition: 0.2s;
+        }
+        .tag i {
+            color: var(--red);
+            margin-right: 8px;
+        }
+        .tag:hover {
+            border-color: var(--red);
+            transform: scale(1.03);
+        }
+
+        /* LOCAL E INVESTIMENTO */
+        .location-cta {
+            padding: 90px 0;
+            background: #07070C;
+            text-align: center;
+        }
+        .location-card {
+            background: #12121A;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            border-radius: 70px;
+            border: 2px solid var(--red);
+            box-shadow: 0 30px 50px -20px #000;
+        }
+        .location-card i {
+            font-size: 4rem;
+            color: var(--red);
+            background: #1E1E2C;
+            padding: 25px;
+            border-radius: 80px;
+            margin-bottom: 30px;
+        }
+        .location-card h2 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        .location-card .date {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--red);
+            margin: 20px 0;
+        }
+        .price-large {
+            font-size: 4rem;
+            font-weight: 900;
+            margin: 30px 0;
+        }
+        .price-large small {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #9090B0;
+        }
+
+        /* GRUPO WHATSAPP */
+        .whatsapp-group {
+            padding: 90px 0;
+            background: #0B0B0F;
+            text-align: center;
+        }
+        .group-card {
+            background: #12121A;
+            border-radius: 70px;
+            padding: 60px 40px;
+            border: 2px solid var(--red);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .group-card h2 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+        }
+        .group-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .feature {
+            background: #1C1C2A;
+            padding: 15px 30px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #333345;
+        }
+        .feature i {
+            color: var(--red);
+        }
+        .btn-wa {
+            background: var(--red);
+            color: white;
+            font-weight: 800;
+            font-size: 2rem;
+            padding: 25px 60px;
+            border-radius: 90px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            border: 3px solid #B01020;
+            transition: 0.3s;
+            margin-top: 30px;
+        }
+        .btn-wa i {
+            font-size: 3rem;
+        }
+        .btn-wa:hover {
+            background: #B01020;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #040406;
+            padding: 40px 0;
+            text-align: center;
+            color: #6A6A82;
+        }
+
+        /* RESPONSIVO CENTRALIZADO */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .section-title { font-size: 2rem; }
+            .hero h1 { font-size: 2.6rem; }
+            .hero-sub { font-size: 1.2rem; }
+            .price-tag { font-size: 2.8rem; }
+            .top-bar .container { flex-direction: column; gap: 10px; }
+            .benefit-card { text-align: center; }
+            .benefit-icon { margin-left: auto; margin-right: auto; }
+            .structure-item { flex-direction: column; text-align: center; padding: 30px 20px; border-radius: 40px; }
+            .structure-item i { margin-bottom: 10px; }
+            .structure-item span { font-size: 1.2rem; }
+            .location-card { padding: 40px 20px; }
+            .location-card h2 { font-size: 2rem; }
+            .price-large { font-size: 3rem; }
+            .btn-wa { font-size: 1.5rem; padding: 20px 30px; }
+            .btn-primary { font-size: 1.2rem; padding: 15px 30px; }
+            .group-card { padding: 40px 20px; }
+        }
+
+        /* alinhamento central geral */
+        .hero, .benefits, .structure, .for-who, .location-cta, .whatsapp-group {
+            text-align: center;
+        }
+        .benefit-card, .structure-item, .feature {
+            text-align: left;
+        }
+        @media (max-width: 768px) {
+            .benefit-card, .feature {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR (sem primo da marca) -->
+<div class="top-bar">
+    <div class="container">
+        <div class="top-item"><i class="fas fa-calendar-alt"></i> 11 e 12 de Abril 2026 · Sábado e Domingo</div>
+        <div class="top-item"><i class="fas fa-map-marker-alt"></i> Campo Grande – MS · Local Premium</div>
+        <div class="top-item"><i class="fas fa-users"></i> Vagas Limitadas</div>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge animate-up"><i class="fas fa-bolt"></i> ÚLTIMAS 12 VAGAS · PRESENCIAL</div>
+        <h1 class="animate-up delay-1">IMERSÃO <span>TRÁFEGO DE ELITE</span></h1>
+        <p class="hero-sub animate-up delay-2">2 dias para empresários que querem previsibilidade e lucro real através do tráfego pago. Chega de achismo, métricas que importam.</p>
+        <div class="hero-price animate-up delay-2">
+            <span class="price-tag">R$ 997 <small>à vista</small></span>
+        </div>
+        <div class="hero-info animate-up delay-3">
+            <span class="info-chip"><i class="fas fa-check-circle"></i> Imersão presencial</span>
+            <span class="info-chip"><i class="fas fa-check-circle"></i> Sábado e Domingo</span>
+            <span class="info-chip"><i class="fas fa-check-circle"></i> Certificado de conclusão</span>
+        </div>
+        <a href="#grupo" class="btn-primary"><i class="fab fa-whatsapp"></i> QUERO GARANTIR MINHA VAGA</a>
+        <p style="margin-top: 25px; color: #8A8AA5;"><i class="fas fa-lock text-red"></i> Pagamento 100% seguro · Acesso imediato ao grupo</p>
+    </div>
+</section>
+
+<!-- BENEFÍCIOS (cópia renovada, sem repetição) -->
+<section class="benefits">
+    <div class="container">
+        <h2 class="section-title">O QUE VOCÊ <span class="red">LEVA PARA CASA</span></h2>
+        <p class="subtitle">Não é um curso de tráfego qualquer. É um sistema para empresários que querem resultados previsíveis e escaláveis.</p>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-bullseye"></i></div>
+                <h3>Previsibilidade de resultados</h3>
+                <p>Você vai eliminar a instabilidade dos anúncios. Aprenda a estruturar campanhas que entregam leads e vendas todo santo dia, independente do algoritmo.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3>ROAS real (não só leads)</h3>
+                <p>Chega de métricas de vaidade. Vamos te mostrar como analisar o custo por aquisição e o retorno sobre cada real investido, do jeito que o empresário precisa.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-crown"></i></div>
+                <h3>Mentalidade de escala</h3>
+                <p>Não adianta tráfego sem posicionamento. Você vai entender como ofertas, gatilhos mentais e copy se conectam para multiplicar o lucro.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-file-signature"></i></div>
+                <h3>Plano de ação individual</h3>
+                <p>Durante a imersão, você terá um momento de mentoria ao vivo para aplicar os conceitos no seu negócio. Saia com um roadmap personalizado.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ESTRUTURA DOS DIAS -->
+<section class="structure">
+    <div class="container">
+        <h2 class="section-title"><span class="red">CONTEÚDO</span> CIRÚRGICO</h2>
+        <p class="subtitle">Do planejamento à execução: dois dias imersivos com especialistas que faturam com tráfego.</p>
+        <div class="structure-list">
+            <div class="structure-item"><i class="fas fa-1"></i><span><strong>DIA 1 (sábado):</strong> Funis de captação e nutrição para negócios locais e digitais. A base da previsibilidade.</span></div>
+            <div class="structure-item"><i class="fas fa-2"></i><span><strong>DIA 1 (sábado):</strong> Estrutura de campanhas com foco em lucro – como configurar para não queimar verba.</span></div>
+            <div class="structure-item"><i class="fas fa-3"></i><span><strong>DIA 2 (domingo):</strong> Escala com ROAS positivo: estratégias para dobrar investimento mantendo rentabilidade.</span></div>
+            <div class="structure-item"><i class="fas fa-4"></i><span><strong>DIA 2 (domingo):</strong> Oferta, copy e gatilhos mentais aplicados ao tráfego pago. Como fazer o lead comprar.</span></div>
+            <div class="structure-item"><i class="fas fa-star"></i><span><strong>MENTORIA AO VIVO:</strong> Análise de campanhas reais dos participantes. Você traz seus números, a gente ajuda a destravar.</span></div>
+        </div>
+        <div class="bonus-highlight">
+            <i class="fas fa-gift text-red"></i> Bônus: Grupo vitalício + materiais complementares
+        </div>
+    </div>
+</section>
+
+<!-- PARA QUEM É (PÚBLICO) -->
+<section class="for-who">
+    <div class="container">
+        <h2 class="section-title"><span class="red">FEITO PARA</span> QUEM CANSA DE TENTATIVAS</h2>
+        <p class="subtitle">Essa imersão é sua se você quer parar de perder dinheiro com tráfego e começar a ter lucro real.</p>
+        <div class="tags-container">
+            <span class="tag"><i class="fas fa-briefcase"></i> Donos de negócio</span>
+            <span class="tag"><i class="fas fa-chart-line"></i> Gestores de tráfego</span>
+            <span class="tag"><i class="fas fa-store-alt"></i> Comércio / varejo</span>
+            <span class="tag"><i class="fas fa-globe"></i> Infoprodutores</span>
+            <span class="tag"><i class="fas fa-dumbbell"></i> Prestadores de serviço</span>
+            <span class="tag"><i class="fas fa-rocket"></i> Escalar com previsibilidade</span>
+            <span class="tag"><i class="fas fa-chart-bar"></i> Anunciantes que querem ROAS</span>
+            <span class="tag"><i class="fas fa-user-tie"></i> Empresários B2B</span>
+        </div>
+        <p style="font-size: 1.3rem; margin-top: 40px; color: #DDD;">Não importa se você nunca rodou um anúncio ou se já investe pesado. O conteúdo é estratificado para todos os níveis.</p>
+    </div>
+</section>
+
+<!-- LOCAL E INVESTIMENTO -->
+<section class="location-cta">
+    <div class="container location-card">
+        <i class="fas fa-map-pin"></i>
+        <h2>CAMPO GRANDE · MS</h2>
+        <p style="font-size: 1.2rem; color: #CCCCE0;">Localização estratégica, estrutura completa e ambiente para networking de alto nível. Endereço liberado no grupo VIP.</p>
+        <div class="date"><i class="fas fa-calendar-alt"></i> 11 e 12 DE ABRIL 2026 (SÁBADO E DOMINGO)</div>
+        <div class="price-large">R$ 997 <small>investimento</small></div>
+        <a href="#grupo" class="btn-primary" style="animation: none; font-size: 1.6rem; padding: 18px 50px;">GARANTIR MINHA VAGA</a>
+        <p style="margin-top: 30px; color: #AAAACC;"><i class="fas fa-credit-card"></i> Parcelamento em até 12x no cartão · Acesso imediato ao grupo</p>
+    </div>
+</section>
+
+<!-- GRUPO WHATSAPP (link de entrada) -->
+<section class="whatsapp-group" id="grupo">
+    <div class="container group-card">
+        <h2><i class="fab fa-whatsapp" style="color:#25D366;"></i> GRUPO VIP DA IMERSÃO</h2>
+        <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">Assim que você garantir sua vaga, entra para o grupo fechado. Por lá você recebe:</p>
+        <div class="group-features">
+            <span class="feature"><i class="fas fa-map-marked-alt"></i> Endereço completo</span>
+            <span class="feature"><i class="fas fa-calendar-check"></i> Programação detalhada</span>
+            <span class="feature"><i class="fas fa-download"></i> Materiais preparatórios</span>
+            <span class="feature"><i class="fas fa-comments"></i> Networking com alunos</span>
+            <span class="feature"><i class="fas fa-headset"></i> Suporte direto</span>
+        </div>
+        <a href="https://chat.whatsapp.com/EoqLkNPDqJs4zIuZzYaRWO?mode=hqctcla" class="btn-wa" target="_blank">
+            <i class="fab fa-whatsapp"></i> ENTRAR NO GRUPO
+        </a>
+        <p style="margin-top: 30px; color: #AAA;"><i class="fas fa-arrow-up"></i> Clique no botão e entre no grupo oficial</p>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Imersão Tráfego de Elite. Todos os direitos reservados.</p>
+        <p style="margin-top: 10px;">Campo Grande · Mato Grosso do Sul</p>
+    </div>
+</footer>
+
+<!-- Script simples para rolagem suave -->
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>
+</body>
+</html>
